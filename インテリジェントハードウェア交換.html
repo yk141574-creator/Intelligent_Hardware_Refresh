@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexthink Dashboard Viewer</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: #f5f7f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 全体を中央寄せ */
+        }
+
+        /* コンテナ：ここが幅の決め手です */
+        .container {
+            width: 100%;
+            max-width: 1200px; /* ご提示のサイトに近い幅に設定 */
+            background-color: #ffffff;
+            min-height: 100vh;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        header {
+            padding: 20px 20px 0 20px;
+            border-bottom: 1px solid #d1d9e0;
+        }
+
+        h1 {
+            font-size: 22px;
+            color: #1a2b3c;
+            margin: 0 0 15px 0;
+        }
+
+        .tab-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tab-button {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 15px;
+            color: #5c6c7b;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab-button:hover {
+            color: #000;
+        }
+
+        .tab-button.active {
+            color: #0070d2;
+            border-bottom: 3px solid #0070d2;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .dashboard-img {
+            width: 100%;      /* コンテナの幅に合わせる */
+            height: auto;     /* 比率を維持 */
+            display: none;
+        }
+
+        .dashboard-img.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>インテリジェントハードウェア交換</h1>
+        <div class="tab-container">
+            <button class="tab-button active" onclick="showTab(0)">概要</button>
+            <button class="tab-button" onclick="showTab(1)">DEXスコアの詳細</button>
+            <button class="tab-button" onclick="showTab(2)">利用状況の詳細</button>
+            <button class="tab-button" onclick="showTab(3)">推奨事項</button>
+        </div>
+    </header>
+
+    <div class="content">
+        <img src="I_HW_R_1_概要.jpg" alt="概要" class="dashboard-img active">
+        <img src="I_HW_R_2_DEX.jpg" alt="DEXスコアの詳細" class="dashboard-img">
+        <img src="I_HW_R_3_利用状況.jpg" alt="利用状況の詳細" class="dashboard-img">
+        <img src="I_HW_R_4_推奨.jpg" alt="推奨事項" class="dashboard-img">
+    </div>
+</div>
+
+<script>
+    function showTab(index) {
+        const buttons = document.querySelectorAll('.tab-button');
+        const images = document.querySelectorAll('.dashboard-img');
+        
+        buttons.forEach(btn => btn.classList.remove('active'));
+        images.forEach(img => img.classList.remove('active'));
+
+        buttons[index].classList.add('active');
+        images[index].classList.add('active');
+        
+        window.scrollTo(0, 0);
+    }
+</script>
+
+</body>
+</html>
